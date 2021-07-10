@@ -1,6 +1,6 @@
 package me.scyphers.plugins.pluginname.gui.signs;
 
-import me.scyphers.plugins.pluginname.Plugin;
+import me.scyphers.plugins.pluginname.TradingCards;
 import me.scyphers.plugins.pluginname.gui.GUI;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
@@ -12,7 +12,7 @@ public abstract class SignGUI implements GUI<SignChangeEvent> {
 
     protected final GUI<?> lastGUI;
 
-    protected final Plugin plugin;
+    protected final TradingCards plugin;
 
     protected final Player player;
 
@@ -20,7 +20,7 @@ public abstract class SignGUI implements GUI<SignChangeEvent> {
 
     private final int signID;
 
-    public SignGUI(GUI<?> lastGUI, Plugin plugin, Player player, String[] text) {
+    public SignGUI(GUI<?> lastGUI, TradingCards plugin, Player player, String[] text) {
         this.lastGUI = lastGUI;
         this.plugin = plugin;
         this.player = player;
@@ -54,7 +54,8 @@ public abstract class SignGUI implements GUI<SignChangeEvent> {
     }
 
     @Override
-    public @NotNull Plugin getPlugin() {
+    public @NotNull
+    TradingCards getPlugin() {
         return plugin;
     }
 

@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'me.scyphers.plugins.pluginname'
+group 'me.scyphers.fruitservers.tradingcards'
 version '1.0'
 
 repositories {

@@ -1,8 +1,17 @@
-main:
-name:
-version:
+main: me.scyphers.fruitservers.tradingcards.TradingCards
+name: TradingCards
+version: 1.0
 api-version: 1.17
 author: Scyphers
 commands:
-  admin:
-    description: "Reloads the plugin"
+  cards:
+    description: "Management of the Trading Cards plugin"
+    aliases: [tradingcards, tcards]
+
+permissions:
+  tradingcards.commands.reload:
+    description: reloads the plugin
+    default: op
+  tradingcards.cards.drop:
+    description: if mobs killed by the player with this permission will drop
+    default: not op

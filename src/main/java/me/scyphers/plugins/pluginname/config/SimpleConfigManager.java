@@ -1,12 +1,12 @@
 package me.scyphers.plugins.pluginname.config;
 
-import me.scyphers.plugins.pluginname.Plugin;
+import me.scyphers.plugins.pluginname.TradingCards;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public class SimpleConfigManager implements ConfigManager {
 
-    private final Plugin plugin;
+    private final TradingCards plugin;
 
     // Config Files
     private final Settings settings;
@@ -14,7 +14,7 @@ public class SimpleConfigManager implements ConfigManager {
 
     private boolean safeToSave = true;
 
-    public SimpleConfigManager(Plugin plugin) {
+    public SimpleConfigManager(TradingCards plugin) {
         this.plugin = plugin;
         this.settings = new Settings(this);
         this.messengerFile = new MessengerFile(this);
@@ -46,7 +46,7 @@ public class SimpleConfigManager implements ConfigManager {
     }
 
     @Override
-    public Plugin getPlugin() {
+    public TradingCards getPlugin() {
         return plugin;
     }
 

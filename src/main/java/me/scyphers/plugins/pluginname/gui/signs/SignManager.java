@@ -1,6 +1,6 @@
 package me.scyphers.plugins.pluginname.gui.signs;
 
-import me.scyphers.plugins.pluginname.Plugin;
+import me.scyphers.plugins.pluginname.TradingCards;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -19,7 +19,7 @@ public class SignManager {
 
     private int lastSignID = 0;
 
-    public SignManager(Plugin plugin) {
+    public SignManager(TradingCards plugin) {
         this.signDataKey = new NamespacedKey(plugin, "isSignGUI");
         this.signs = new HashMap<>();
 

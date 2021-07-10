@@ -1,6 +1,6 @@
 package me.scyphers.plugins.pluginname.gui;
 
-import me.scyphers.plugins.pluginname.Plugin;
+import me.scyphers.plugins.pluginname.TradingCards;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.InventoryView;
@@ -42,7 +42,8 @@ public interface GUI<T extends Event> {
      * or add the ability to access such system through your plugin class
      * @return the plugin
      */
-    @NotNull Plugin getPlugin();
+    @NotNull
+    TradingCards getPlugin();
 
     /**
      * Gets the player that will be or is currently viewing this GUI

@@ -1,7 +1,7 @@
 package me.scyphers.plugins.pluginname.command;
 
 import me.scyphers.plugins.pluginname.api.Messenger;
-import me.scyphers.plugins.pluginname.Plugin;
+import me.scyphers.plugins.pluginname.TradingCards;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -13,11 +13,11 @@ import java.util.List;
 
 public class AdminCommand implements TabExecutor {
 
-    private final Plugin plugin;
+    private final TradingCards plugin;
 
     private final Messenger pm;
 
-    public AdminCommand(Plugin plugin) {
+    public AdminCommand(TradingCards plugin) {
         this.plugin = plugin;
         this.pm = plugin.getMessenger();
     }
@@ -35,7 +35,7 @@ public class AdminCommand implements TabExecutor {
         // IDE flags this with a warning for not enough case statements - ignored due to more commands expected when plugin is created
         switch (args[0]) {
             case "reload":
-                if (!sender.hasPermission("plugin.admin.reload")) {
+                if (!sender.hasPermission("tradingcards.commands.reload")) {
                     pm.msg(sender, "errorMessages.noPermission"); return true;
                 }
                 plugin.reload(sender);

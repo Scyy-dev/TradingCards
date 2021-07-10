@@ -8,8 +8,9 @@
 # e.g. noPermission: "[NO_PREFIX]&cYou do not have permission to use that command"
 
 # Prefix for all messages
-prefix: "[PLUGIN_NAME] "
+prefix: "&7[&cTrading&6Cards&7] &f"
 
 errorMessages:
   noPermission: "&cYou do not have permission for that command"
+  invalidCommand: "&cThat was not a recognised command"
   cannotOpenSign: "&cCould not display sign information. Please try again in a few moments."

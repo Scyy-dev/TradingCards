@@ -13,7 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.Arrays;
 import java.util.List;
 
-public class Plugin extends JavaPlugin {
+public class TradingCards extends JavaPlugin {
 
     private SimpleConfigManager configManager;
 
@@ -75,8 +75,8 @@ public class Plugin extends JavaPlugin {
         }
         authors.delete(authors.length() - 1, authors.length());
         return Arrays.asList(
-                "PLUGIN_NAME v" + this.getDescription().getVersion(),
-                "Built by" + authors.toString()
+                "TradingCards v" + this.getDescription().getVersion(),
+                "Built by" + authors
         );
     }
 
