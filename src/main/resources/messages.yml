@@ -1,0 +1,15 @@
+# -================================-
+#    Customisable Player Messages
+# -================================-
+# All messages use the '&' symbol for the minecraft default colouring/formatting
+
+# If you want a message to not have the prefix, tag it at the start of the message '[NO_PREFIX]'
+# Make sure the tag is the VERY start, no format codes or anything
+# e.g. noPermission: "[NO_PREFIX]&cYou do not have permission to use that command"
+
+# Prefix for all messages
+prefix: "[PLUGIN_NAME] "
+
+errorMessages:
+  noPermission: "&cYou do not have permission for that command"
+  cannotOpenSign: "&cCould not display sign information. Please try again in a few moments."
