@@ -23,7 +23,7 @@ public class MessengerFile extends ConfigFile implements Messenger {
     public static final Pattern hex = Pattern.compile("&#[a-fA-F0-9]{6}");
 
     // If using this as a template, feel free to customise this exact char - it was chosen at random
-    private static final char interactChar = 'φ';
+    private static final char interactChar = '*';
 
     private String prefix;
 
