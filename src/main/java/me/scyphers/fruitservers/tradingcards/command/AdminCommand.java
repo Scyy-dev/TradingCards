@@ -1,7 +1,7 @@
-package me.scyphers.plugins.pluginname.command;
+package me.scyphers.fruitservers.tradingcards.command;
 
-import me.scyphers.plugins.pluginname.api.Messenger;
-import me.scyphers.plugins.pluginname.TradingCards;
+import me.scyphers.fruitservers.tradingcards.TradingCards;
+import me.scyphers.fruitservers.tradingcards.api.Messenger;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;

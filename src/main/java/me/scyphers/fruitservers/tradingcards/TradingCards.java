@@ -1,12 +1,11 @@
-package me.scyphers.plugins.pluginname;
+package me.scyphers.fruitservers.tradingcards;
 
-import me.scyphers.plugins.pluginname.api.Messenger;
-import me.scyphers.plugins.pluginname.cards.CardGenerator;
-import me.scyphers.plugins.pluginname.command.AdminCommand;
-import me.scyphers.plugins.pluginname.config.Settings;
-import me.scyphers.plugins.pluginname.config.SimpleConfigManager;
-import me.scyphers.plugins.pluginname.event.EventListener;
-import me.scyphers.plugins.pluginname.gui.signs.SignManager;
+import me.scyphers.fruitservers.tradingcards.api.Messenger;
+import me.scyphers.fruitservers.tradingcards.cards.CardGenerator;
+import me.scyphers.fruitservers.tradingcards.config.Settings;
+import me.scyphers.fruitservers.tradingcards.config.SimpleConfigManager;
+import me.scyphers.fruitservers.tradingcards.event.EventListener;
+import me.scyphers.fruitservers.tradingcards.command.AdminCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -43,7 +42,7 @@ public class TradingCards extends JavaPlugin {
     }
 
     public CardGenerator setUpGenerator() {
-
+        return new CardGenerator(null);
     }
 
     public void reload(CommandSender sender) {

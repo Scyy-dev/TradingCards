@@ -1,4 +1,4 @@
-package me.scyphers.plugins.pluginname.cards;
+package me.scyphers.fruitservers.tradingcards.cards;
 
 public enum CardRarity {
 

@@ -1,12 +1,10 @@
-package me.scyphers.plugins.pluginname.cards;
+package me.scyphers.fruitservers.tradingcards.cards;
 
 import java.util.*;
 
 public class CardGenerator {
 
     private final Map<CardRarity, List<Card>> cards;
-
-    private final Map<CardSource, >
 
     private final Map<CardRarity, Integer> rarityWeights;
 

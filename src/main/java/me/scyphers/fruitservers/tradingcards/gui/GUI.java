@@ -1,9 +1,8 @@
-package me.scyphers.plugins.pluginname.gui;
+package me.scyphers.fruitservers.tradingcards.gui;
 
-import me.scyphers.plugins.pluginname.TradingCards;
+import me.scyphers.fruitservers.tradingcards.TradingCards;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
-import org.bukkit.inventory.InventoryView;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

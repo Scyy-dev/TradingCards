@@ -1,7 +1,7 @@
-package me.scyphers.plugins.pluginname.config;
+package me.scyphers.fruitservers.tradingcards.config;
 
-import me.scyphers.plugins.pluginname.cards.Card;
-import me.scyphers.plugins.pluginname.cards.CardRarity;
+import me.scyphers.fruitservers.tradingcards.cards.Card;
+import me.scyphers.fruitservers.tradingcards.cards.CardRarity;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 

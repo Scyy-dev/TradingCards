@@ -1,6 +1,6 @@
-package me.scyphers.plugins.pluginname.event;
+package me.scyphers.fruitservers.tradingcards.event;
 
-import me.scyphers.plugins.pluginname.TradingCards;
+import me.scyphers.fruitservers.tradingcards.TradingCards;
 import org.bukkit.event.Listener;
 
 public class EventListener implements Listener {

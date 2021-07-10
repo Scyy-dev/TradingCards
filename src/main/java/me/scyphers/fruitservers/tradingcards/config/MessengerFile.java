@@ -1,6 +1,6 @@
-package me.scyphers.plugins.pluginname.config;
+package me.scyphers.fruitservers.tradingcards.config;
 
-import me.scyphers.plugins.pluginname.api.Messenger;
+import me.scyphers.fruitservers.tradingcards.api.Messenger;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.BaseComponent;

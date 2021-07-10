@@ -1,6 +1,6 @@
-package me.scyphers.plugins.pluginname.cards;
+package me.scyphers.fruitservers.tradingcards.cards;
 
-import me.scyphers.plugins.pluginname.util.ItemBuilder;
+import me.scyphers.fruitservers.tradingcards.util.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;

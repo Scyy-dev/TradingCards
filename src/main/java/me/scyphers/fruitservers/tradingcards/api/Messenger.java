@@ -1,4 +1,4 @@
-package me.scyphers.plugins.pluginname.api;
+package me.scyphers.fruitservers.tradingcards.api;
 
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.BaseComponent;

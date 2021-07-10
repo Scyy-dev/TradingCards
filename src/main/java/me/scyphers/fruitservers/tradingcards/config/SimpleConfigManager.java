@@ -1,6 +1,6 @@
-package me.scyphers.plugins.pluginname.config;
+package me.scyphers.fruitservers.tradingcards.config;
 
-import me.scyphers.plugins.pluginname.TradingCards;
+import me.scyphers.fruitservers.tradingcards.TradingCards;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 

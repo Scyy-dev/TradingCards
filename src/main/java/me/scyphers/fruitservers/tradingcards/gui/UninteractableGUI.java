@@ -1,4 +1,4 @@
-package me.scyphers.plugins.pluginname.gui;
+package me.scyphers.fruitservers.tradingcards.gui;
 
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.jetbrains.annotations.NotNull;

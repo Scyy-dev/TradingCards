@@ -1,4 +1,4 @@
-package me.scyphers.plugins.pluginname.config;
+package me.scyphers.fruitservers.tradingcards.config;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
