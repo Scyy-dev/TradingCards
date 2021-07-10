@@ -158,7 +158,7 @@ public class ItemBuilder {
     }
 
     /**
-     * Sets the item to be unbreakble
+     * Sets the item to be unbreakable
      * @param showFlag whether to show that the item is unbreakable
      * @return The Builder instance
      */
@@ -168,6 +168,18 @@ public class ItemBuilder {
         if (showFlag) this.itemMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         return this;
 
+    }
+
+    /*  Other  */
+
+    /**
+     * Add item flags to the item
+     * @param flags flags to add
+     * @return The Builder instance
+     */
+    public ItemBuilder flag(ItemFlag... flags) {
+        this.itemMeta.addItemFlags(flags);
+        return this;
     }
 
     /**
