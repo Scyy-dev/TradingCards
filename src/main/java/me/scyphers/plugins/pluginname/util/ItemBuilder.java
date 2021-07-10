@@ -171,7 +171,6 @@ public class ItemBuilder {
     }
 
     /*  Other  */
-
     /**
      * Add item flags to the item
      * @param flags flags to add

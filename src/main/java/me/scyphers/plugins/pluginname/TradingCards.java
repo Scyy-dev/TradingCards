@@ -17,7 +17,6 @@ public class TradingCards extends JavaPlugin {
 
     private SimpleConfigManager configManager;
 
-    private SignManager signManager;
 
     @Override
     public void onEnable() {
@@ -25,7 +24,6 @@ public class TradingCards extends JavaPlugin {
         // Register the Config Manager
         this.configManager = new SimpleConfigManager(this);
 
-        this.signManager = new SignManager(this);
 
         // Register the Admin Command
         AdminCommand adminCommand = new AdminCommand(this);
@@ -54,10 +52,6 @@ public class TradingCards extends JavaPlugin {
 
     public SimpleConfigManager getConfigManager() {
         return configManager;
-    }
-
-    public SignManager getSignManager() {
-        return signManager;
     }
 
     public Settings getSettings() {
