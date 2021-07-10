@@ -11,6 +11,7 @@ public class SimpleConfigManager implements ConfigManager {
     // Config Files
     private final Settings settings;
     private final MessengerFile messengerFile;
+    private final CardsDataFile cardsDataFile;
 
     private boolean safeToSave = true;
 
@@ -18,6 +19,7 @@ public class SimpleConfigManager implements ConfigManager {
         this.plugin = plugin;
         this.settings = new Settings(this);
         this.messengerFile = new MessengerFile(this);
+        this.cardsDataFile = new CardsDataFile(this);
 
         // Schedule a repeating task to save the configs
         long saveTicks = settings.getSaveTicks();
@@ -27,7 +29,9 @@ public class SimpleConfigManager implements ConfigManager {
                     YamlConfiguration settingsConfig = YamlConfiguration.loadConfiguration(settings.getConfigFile());
                     settings.save(settingsConfig);
                     YamlConfiguration messengerConfig = YamlConfiguration.loadConfiguration(messengerFile.getConfigFile());
-                    settings.save(messengerConfig);
+                    messengerFile.save(messengerConfig);
+                    YamlConfiguration cardsConfig = YamlConfiguration.loadConfiguration(cardsDataFile.getConfigFile());
+                    cardsDataFile.save(cardsConfig);
                 } catch (Exception e) {
                     plugin.getLogger().warning("Could not save config files!");
                     e.printStackTrace();

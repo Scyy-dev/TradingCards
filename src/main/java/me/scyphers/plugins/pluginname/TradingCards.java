@@ -1,6 +1,7 @@
 package me.scyphers.plugins.pluginname;
 
 import me.scyphers.plugins.pluginname.api.Messenger;
+import me.scyphers.plugins.pluginname.cards.CardGenerator;
 import me.scyphers.plugins.pluginname.command.AdminCommand;
 import me.scyphers.plugins.pluginname.config.Settings;
 import me.scyphers.plugins.pluginname.config.SimpleConfigManager;
@@ -17,6 +18,7 @@ public class TradingCards extends JavaPlugin {
 
     private SimpleConfigManager configManager;
 
+    private CardGenerator generator;
 
     @Override
     public void onEnable() {
@@ -24,6 +26,7 @@ public class TradingCards extends JavaPlugin {
         // Register the Config Manager
         this.configManager = new SimpleConfigManager(this);
 
+        this.generator = this.setUpGenerator();
 
         // Register the Admin Command
         AdminCommand adminCommand = new AdminCommand(this);
@@ -37,6 +40,10 @@ public class TradingCards extends JavaPlugin {
     @Override
     public void onDisable() {
         super.onDisable();
+    }
+
+    public CardGenerator setUpGenerator() {
+
     }
 
     public void reload(CommandSender sender) {

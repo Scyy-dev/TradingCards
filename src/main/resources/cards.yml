@@ -1,0 +1,528 @@
+Cards:
+  Common:  
+    Goomba:
+      Series: '4'
+      Type: 'Mario'
+      Has-Shiny-Version: true
+      Info: 'A mushroom-like enemy that Mario stomps'
+    Koopa:
+      Series: '4'
+      Type: 'Mario'
+      Has-Shiny-Version: true
+      Info: 'A tortoise-like enemy that spins around in Mario'
+    Shy_Guy:
+      Series: '4'
+      Type: 'Mario'
+      Has-Shiny-Version: true
+      Info: 'A regular Shy Guy wears a red robe, brown belt and a white mask'
+    Piranha_Plant:
+      Series: '4'
+      Type: 'Mario'
+      Has-Shiny-Version: true
+      Info: 'Based on Venus flytraps and eat anything that approaches them'
+    Lakitu:
+      Series: '4'
+      Type: 'Mario'
+      Has-Shiny-Version: true
+      Info: 'Koopas who ride clouds through the skies, mostly dropping Spiny Eggs on the ground'
+    Bom-omb: 
+      Series: '4'
+      Type: 'Mario'
+      Has-Shiny-Version: true
+      Info: 'Living, moving mechanical bombs with eyes, feet and a wind-up key on the back'
+    Team_Rocket_Grunt:
+      Series: '4'
+      Type: 'Pokemon'
+      Has-Shiny-Version: true
+      Info: 'Members of Team GO Rocket and subordinates of Team GO Rocket Leaders and Giovanni'
+    Team_Magma_Grunt:
+      Series: '4'
+      Type: 'Pokemon'
+      Has-Shiny-Version: true
+      Info: 'The peons of Team Magma, wearing red outfits'
+    Team_Aqua_Grunt:
+      Series: '4'
+      Type: 'Pokemon'
+      Has-Shiny-Version: true
+      Info: 'The peons of Team Aqua, wearing blue outfits'
+    Pathfinder:
+      Series: '4'
+      Type: 'Apex Legends'
+      Has-Shiny-Version: true
+      Info: 'Spends his whole life trying to find who his creator is'
+    Wraith:
+      Series: '4'
+      Type: 'Apex Legends'
+      Has-Shiny-Version: true
+      Info: 'A mysterious escaped human experiment touched by the void and a competitor in the Apex Games'
+    Bloodhound:
+      Series: '4'
+      Type: 'Apex Legends'
+      Has-Shiny-Version: true
+      Info: 'It is a gift to be an Apex Legend, but the true test is in the eyes of the Allfather'
+    Horizon:
+      Series: '4'
+      Type: 'Apex Legends'
+      Has-Shiny-Version: true
+      Info: 'A charmingly eccentric astrophysicist hired to fix an energy crisis'
+    Crypto:
+      Series: '4'
+      Type: 'Apex Legends'
+      Has-Shiny-Version: true
+      Info: 'Framed for corporate espionage and murder, he was forced to abandon his life and identity'
+    Kai:
+      Series: '4'
+      Type: 'Ninjago'
+      Has-Shiny-Version: true
+      Info: 'The current Elemental Master and Ninja of Fire'
+    Cole:
+      Series: '4'
+      Type: 'Ninjago'
+      Has-Shiny-Version: true
+      Info: 'The current Elemental Master and Ninja of Earth'
+    Zane:
+      Series: '4'
+      Type: 'Ninjago'
+      Has-Shiny-Version: true
+      Info: 'The current Elemental Master and Ninja of Ice'
+    Jay:
+      Series: '4'
+      Type: 'Ninjago'
+      Has-Shiny-Version: true
+      Info: 'The current Elemental Master and Ninja of Lightning'
+    PacMan:
+      Series: '4'
+      Type: 'PacMan'
+      Has-Shiny-Version: true
+      Info: 'Waka Waka Waka Waka'
+    Blinky:
+      Series: '4'
+      Type: 'PacMan'
+      Has-Shiny-Version: true
+      Info: 'Leader of the Ghosts and the arch-enemy of Pac-Man'
+    Pinky:
+      Series: '4'
+      Type: 'PacMan'
+      Has-Shiny-Version: true
+      Info: 'One of the four main ghosts in the Pac-Man series'
+    Inky:
+      Series: '4'
+      Type: 'PacMan'
+      Has-Shiny-Version: true
+      Info: 'One of the four main ghosts in the Pac-Man series'
+    Clyde:
+      Series: '4'
+      Type: 'PacMan'
+      Has-Shiny-Version: true
+      Info: 'One of the four main ghosts in the Pac-Man series'
+    Waddle_Dee:
+      Series: '4'
+      Type: 'Kirby'
+      Has-Shiny-Version: true
+      Info: 'A species native to the Planet Popstar'
+    Mr._Frosty:
+      Series: '4'
+      Type: 'Kirby'
+      Has-Shiny-Version: true
+      Info: 'Mr. Frosty resembles a tuskless humanoid walrus with a light blue muzzle'
+    Kracko:
+      Series: '4'
+      Type: 'Kirby'
+      Has-Shiny-Version: true
+      Info: 'Kracko is a giant puffy, cloud-like monster'
+    Sub-Zero:
+      Series: '4'
+      Type: 'Moral Kombat'
+      Has-Shiny-Version: true
+      Info: 'Defined by his ability to control ice in many forms'
+    Scorpion:
+      Series: '4'
+      Type: 'Mortal Kombat'
+      Has-Shiny-Version: true
+      Info: 'An undead ninja, defined by his quest to avenge the deaths of himself, his family, and his clan'
+    Cloud_Strife:
+      Series: '4'
+      Type: 'Final Fantasy'
+      Has-Shiny-Version: true
+      Info: 'Main protagonist of Final Fantasy VII'   
+    GLaDos:
+      Series: '4'
+      Type: 'Portal'
+      Has-Shiny-Version: true
+      Info: 'An artificial intelligence created by Aperture Science'
+  Uncommon:
+    Lamar_Davis:
+      Series: '4'
+      Type: 'GTA V'
+      Has-Shiny-Version: true
+      Info: 'Best friend of Franklin Clinton, wannabe thug'
+    Nik Bellic:
+      Series: '4'
+      Type: 'GTA IV'
+      Has-Shiny-Version: true
+      Info: 'Mainly referred to as Niko'
+    Diddy_Kong:
+      Series: '4'
+      Type: 'Donkey Kong'
+      Has-Shiny-Version: true
+      Info: 'Diddy Kong is Donkey Kongs sidekick and best friend'
+    Funky_Kong:
+      Series: '4'
+      Type: 'Donkey Kong'
+      Has-Shiny-Version: true
+      Info: 'Offers services such as his transportation and weaponry to the Kong Family'
+    Dixie_Kong:
+      Series: '4'
+      Type: 'Donkey Kong'
+      Has-Shiny-Version: true
+      Info: 'She is Diddy Kong’s girlfriend and Tiny Kongs older sister'
+    Rayman:
+      Series: '4'
+      Type: 'Rayman'
+      Has-Shiny-Version: true
+      Info: 'A magical being renowned for his courage and determination'
+    Globox:
+      Series: '4'
+      Type: 'Rayman'
+      Has-Shiny-Version: true
+      Info: 'Rayman’s best friend'
+    Charmander:
+      Series: '4'
+      Type: 'Pokemon'
+      Has-Shiny-Version: true
+      Info: 'A bipedal, reptilian Pokémon with a primarily orange body and blue eyes'
+    Bulbasaur:
+      Series: '4'
+      Type: 'Pokemon'
+      Has-Shiny-Version: true
+      Info: 'A small, quadrupedal Pokémon that has blue-green skin with darker patches'
+    Squirtle:
+      Series: '4'
+      Type: 'Pokemon'
+      Has-Shiny-Version: true
+      Info: 'Squirtle is a small Pokémon that resembles a light-blue turtle'
+    Navi:
+      Series: '4'
+      Type: 'The Legend of Zelda'
+      Has-Shiny-Version: true
+      Info: 'A fairy who serves as Links companion'
+    Ganon:
+      Series: '4'
+      Type: 'The Legend of Zelda'
+      Has-Shiny-Version: true
+      Info: 'The main antagonist of The Legend of Zelda series'
+    Tom_Nook:
+      Series: '4'
+      Type: 'Animal Crossing'
+      Has-Shiny-Version: true
+      Info: 'Operated the village store (or the Resident Services building) in Animal Crossing'
+    Resetti:
+      Series: '4'
+      Type: 'Animal Crossing'
+      Has-Shiny-Version: true
+      Info: 'A very cranky mole that appears in all the Animal Crossing series games'
+    Blathers:
+      Series: '4'
+      Type: 'Animal Crossing'
+      Has-Shiny-Version: true
+      Info: 'An owl character who serves the director of the Museum'
+    K.K._Slider:
+      Series: '4'
+      Type: 'Animal Crossing'
+      Has-Shiny-Version: true
+      Info: 'He works as a musician, playing songs on his guitar'
+    Mabel:
+      Series: '4'
+      Type: 'Animal Crossing'
+      Has-Shiny-Version: true
+      Info: 'Co-owns the Able Sisters tailor shop with her older sister, Sable'
+    Tails:
+      Series: '4'
+      Type: 'Sonic the Hedgehog'
+      Has-Shiny-Version: true
+      Info: 'Sonic’s best friend, sidekick, and most recurring ally'
+    Knuckles:
+      Series: '4'
+      Type: 'Sonic the Hedgehog'
+      Has-Shiny-Version: true
+      Info: 'An anthropomorphic echidna and the current guardian of the Master Emerald'
+    Amy_Rose:
+      Series: '4'
+      Type: 'Sonic the Hedgehog'
+      Has-Shiny-Version: true
+      Info: 'An anthropomorphic hedgehog with a major crush on Sonic'
+    Shadow:
+      Series: '4'
+      Type: 'Sonic the Hedgehog'
+      Has-Shiny-Version: true
+      Info: 'An artificially created life form in the design of a male, anthropomorphic hedgehog'
+    Samus:
+      Series: '4'
+      Type: 'Metroid'
+      Has-Shiny-Version: true
+      Info: 'An intergalactic bounty hunter and the protagonist of the Metroid series'
+    Hornet:
+      Series: '4'
+      Type: 'Hollow Knight'
+      Has-Shiny-Version: true
+      Info: 'Mysterious princess-protector of Hallownest’s ruins'
+    Quirrel:
+      Series: '4'
+      Type: 'Hollow Knight'
+      Has-Shiny-Version: true
+      Info: 'An inquisitive, up-beat explorer, and Monomons apprentice'
+    Meta_Knight:
+      Series: '4'
+      Type: 'Kirby'
+      Has-Shiny-Version: true
+      Info: 'A mysterious knight that looks like kirby underneath his mask'
+    King_Dedede:
+      Series: '4'
+      Type: 'Kirby'
+      Has-Shiny-Version: true
+      Info: 'The greedy self-proclaimed king of Dream Land'
+    Alex_Mason:
+      Series: '4'
+      Type: 'Call of Duty'
+      Has-Shiny-Version: true
+      Info: 'CIA operative and retired Marine Force Recon Captain'
+    Raul_Menendez:
+      Series: '4'
+      Type: 'Call of Duty'
+      Has-Shiny-Version: true
+      Info: 'The main antagonist of Call of Duty: Black Ops II and Call of Duty: Strike Team'
+    Soap_MacTavish:
+      Series: '4'
+      Type: 'Call of Duty'
+      Has-Shiny-Version: true
+      Info: 'Known for his ultimate sacrifice'
+    General_Shepherd:
+      Series: '4'
+      Type: 'Call of Duty'
+      Has-Shiny-Version: true
+      Info: 'an officer in the United States Army in Call of Duty: Modern Warfare 2 '
+  Rare:
+    Toad:
+      Series: '4'
+      Type: 'Mario'
+      Has-Shiny-Version: true
+      Info: '“Thank you Mario, but our Princess is in another castle!”'
+    Wario:
+      Series: '4'
+      Type: 'Mario'
+      Has-Shiny-Version: true
+      Info: '“Ah, I let you win!”'
+    Waluigi:
+      Series: '4'
+      Type: 'Mario'
+      Has-Shiny-Version: true
+      Info: '“Ah, I let you win!”'
+    Yoshi:
+      Series: '4'
+      Type: 'Mario'
+      Has-Shiny-Version: true
+      Info: 'Mario and Luigis sidekick that uses a long tongue to eat enemies'
+    Pit:
+      Series: '4'
+      Type: 'Kid Icarus'
+      Has-Shiny-Version: true
+      Info: 'A young angel, servant to Palutena'
+    Papyrus:
+      Series: '4'
+      Type: 'Fire'
+      Has-Shiny-Version: true
+      Info: 'Brother of Sans, lover of spaghetti'
+    Flowey:
+      Series: '4'
+      Type: 'Undertale'
+      Has-Shiny-Version: true
+      Info: 'The flower without a soul'
+    Undyne:
+      Series: '4'
+      Type: 'Undertale'
+      Has-Shiny-Version: true
+      Info: 'The heroine that never gives up'
+    Asgore:
+      Series: '4'
+      Type: 'Undertale'
+      Has-Shiny-Version: true
+      Info: '"Human... It was nice to meet you. Goodbye."'
+    Mettaton:
+      Series: '4'
+      Type: 'Undertale'
+      Has-Shiny-Version: true
+      Info: 'The robot with a soul'
+    Toriel:
+      Series: '4'
+      Type: 'Undertale'
+      Has-Shiny-Version: true
+      Info: 'Caretaker of the Ruins'
+    Crash_Bandicoot:
+      Series: '4'
+      Type: 'Crash Bandicoot'
+      Has-Shiny-Version: true
+      Info: '"Woah!"'
+    Coco_Bandicoot:
+      Series: '4'
+      Type: 'Crash Bandicoot'
+      Has-Shiny-Version: true
+      Info: 'The high spirited younger sister of Crash Bandicoot'
+    Doctor_Neo_Cortex:
+      Series: '4'
+      Type: 'Crash Bandicoot'
+      Has-Shiny-Version: true
+      Info: '"Ive ruined the lives of so many, I cant be expected to remember them all!"'
+    Doctor_Eggman:
+      Series: '4'
+      Type: 'Sonic the Hedgehog'
+      Has-Shiny-Version: true
+      Info: 'The worlds greatest scientist, and soon to be the worlds greatest ruler'
+    Paimon:
+      Series: '4'
+      Type: 'Genshin Impact'
+      Has-Shiny-Version: true
+      Info: 'Emergency food'
+    Cortana:
+      Series: '4'
+      Type: 'Halo'
+      Has-Shiny-Version: true
+      Info: '"I am offering people a chance to be more than they are naturally"'
+    Dart_Monkey:
+      Series: '4'
+      Type: 'Bloons Tower Defense'
+      Has-Shiny-Version: true
+      Info: 'Short range, low pierce but cheap!'
+    Tack_Shooter:
+      Series: '4'
+      Type: 'Bloons Tower Defense'
+      Has-Shiny-Version: true
+      Info: 'Shoots a short range volley of sharp tacks'
+    Boomerang_Monkey:
+      Series: '4'
+      Type: 'Bloons Tower Defense'
+      Has-Shiny-Version: true
+      Info: 'Hurls a boomerang that follows a curved path. Good range and pierce.'
+  Very Rare:
+    Luigi:
+      Series: '4'
+      Type: 'Mario'
+      Has-Shiny-Version: true
+      Info: 'Marios brother in green, an expert in hunting ghosts'
+    Princess_Peach:
+      Series: '4'
+      Type: 'Mario'
+      Has-Shiny-Version: true
+      Info: '“...Mario!”'
+    Bowser:
+      Series: '4'
+      Type: 'Mario'
+      Has-Shiny-Version: true
+      Info: 'The Great Demon, King Koopa'
+    Princess_Zelda:
+      Series: '4'
+      Type: 'The Legend of Zelda'
+      Has-Shiny-Version: true
+      Info: 'Wielder of the Triforce of Wisdom'
+    Geralt_of_Rivia:
+      Series: '4'
+      Type: 'The Witcher'
+      Has-Shiny-Version: true
+      Info: '“...If I am to choose between one evil and another, then I prefer not to choose at all.”'
+    Ciri_of_Cintra:
+      Series: '4'
+      Type: 'The Witcher'
+      Has-Shiny-Version: true
+      Info: '“Hatred and vengeance blinded me… But I shall stand before them in humility”'
+    Donkey_Kong:
+      Series: '4'
+      Type: 'Donkey Kong'
+      Has-Shiny-Version: true
+      Info: '“King of swing... The thrilla gorilla... its Donkey Kong!”'
+    Lara_Croft:
+      Series: '4'
+      Type: 'Tomb Raider'
+      Has-Shiny-Version: true
+      Info: '“Everything lost is meant to be found”'
+    Steve:
+      Series: '4'
+      Type: 'Minecraft'
+      Has-Shiny-Version: true
+      Info: 'A diamond sword-wielding dragon slayer'
+    Alex:
+      Series: '4'
+      Type: 'Minecraft'
+      Has-Shiny-Version: true
+      Info: 'A diamond sword-wielding dragon slayer'
+    Trevor_Philips:
+      Series: '4'
+      Type: 'GTA V'
+      Has-Shiny-Version: true
+      Info: 'Michael’s best friend'
+    Kirby:
+      Series: '4'
+      Type: 'Kirby'
+      Has-Shiny-Version: true
+      Info: '“Poyo!”'
+  Legendary:
+    Sonic:
+      Series: '4'
+      Type: 'Sonic the Hedgehog'
+      Has-Shiny-Version: true
+      Info: 'The fastest hedgehog'
+    Sans:
+      Series: '4'
+      Type: 'Undertale'
+      Has-Shiny-Version: true
+      Info: 'He speaks in comic sans'
+    Mario:
+      Series: '4'
+      Type: 'Mario'
+      Has-Shiny-Version: true
+      Info: '“It’s-a me, Mario!”'
+    Ash_Ketchum:
+      Series: '4'
+      Type: 'Pokemon'
+      Has-Shiny-Version: true
+      Info: '“Pikachu, I choose you!”'
+    Link:
+      Series: '4'
+      Type: 'The Legend of Zelda'
+      Has-Shiny-Version: true
+      Info: 'The legendary hero'
+    Dragonborn:
+      Series: '4'
+      Type: 'Skyrim'
+      Has-Shiny-Version: true
+      Info: 'But there’s one they fear. In their tongue, Dovahkiin. Dragonborn!'
+    Isabelle:
+      Series: '4'
+      Type: 'Animal Crossing'
+      Has-Shiny-Version: true
+      Info: '“Good morning, Mayor!”'
+    Michael_De_Santa:
+      Series: '4'
+      Type: 'GTA V'
+      Has-Shiny-Version: true
+      Info: 'An infamous thief who spent his whole life trying to make right out of wrong'
+    Kratos:
+      Series: '4'
+      Type: 'God of War'
+      Has-Shiny-Version: true
+      Info: '“We will be the gods we choose to be, not those who have been. Who I was is not who you will be. We must be better.”'
+    Master_Chief:
+      Series: '4'
+      Type: 'Halo'
+      Has-Shiny-Version: true
+      Info: '“Thought I’d try shooting my way out - Mix things up a little.”'
+    Doomguy:
+      Series: '4'
+      Type: 'Doom'
+      Has-Shiny-Version: true
+      Info: '“May you rot in hell.”'
+    Giygas:
+      Series: '4'
+      Type: 'EarthBound'
+      Has-Shiny-Version: true
+      Info: '“Foolish one, you cannot do a thing with your meager powers... Powers worthy of a lowly insect.”'
+
+
