@@ -16,7 +16,7 @@ public class PlayerDataFile extends ConfigFile implements PlayerCardTrader {
 
     @Override
     public void load(YamlConfiguration configuration) throws Exception {
-        this.cardsEnabled = configuration.getBoolean("cardsEnabled");
+        this.cardsEnabled = configuration.getBoolean("cardsEnabled", true);
     }
 
     @Override
