@@ -9,16 +9,15 @@ import java.util.*;
 
 public class CardsDataFile extends ConfigFile {
 
-    private final Map<CardRarity, Set<Card>> cards;
+    private Map<CardRarity, List<Card>> cards;
 
     public CardsDataFile(ConfigManager manager) {
         super(manager, "cards.yml", true);
-        this.cards = new HashMap<>();
     }
 
     @Override
     public void load(YamlConfiguration configuration) throws Exception {
-        this.cards.clear();
+        this.cards = new HashMap<>();
         ConfigurationSection cardsSection = configuration.getConfigurationSection("Cards");
 
         if (cardsSection == null) throw new IllegalArgumentException("Cannot find cards config section");
@@ -30,7 +29,7 @@ public class CardsDataFile extends ConfigFile {
 
             CardRarity rarity = CardRarity.valueOf(rarityKey.toUpperCase(Locale.ROOT));
 
-            Set<Card> cardList = new HashSet<>();
+            List<Card> cardList = new ArrayList<>();
 
             for (String cardName : raritySection.getKeys(false)) {
 
@@ -49,13 +48,13 @@ public class CardsDataFile extends ConfigFile {
         }
     }
 
-    // No saving is done as this is is intended to be a read only object
     @Override
-    public void save(YamlConfiguration configuration) throws Exception {
-
+    public boolean saveData(YamlConfiguration configuration) throws Exception {
+        // file is a read only
+        return false;
     }
 
-    public Map<CardRarity, Set<Card>> getCards() {
+    public Map<CardRarity, List<Card>> getCards() {
         return cards;
     }
 }

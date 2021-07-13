@@ -122,9 +122,7 @@ public class ItemBuilder {
     public ItemBuilder lore(Iterable<String> lore) {
 
         for (String loreLine : lore) {
-
             this.itemLore.add(ChatColor.translateAlternateColorCodes('&', loreLine));
-
         }
 
         return this;

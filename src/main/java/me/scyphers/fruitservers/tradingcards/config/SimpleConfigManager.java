@@ -21,19 +21,16 @@ public class SimpleConfigManager implements ConfigManager {
         this.messengerFile = new MessengerFile(this);
         this.cardsDataFile = new CardsDataFile(this);
 
-        // Schedule a repeating task to save the configs
+        // Schedule a repeating task to saveData the configs
         long saveTicks = settings.getSaveTicks();
         Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
             if (safeToSave) {
                 try {
-                    YamlConfiguration settingsConfig = YamlConfiguration.loadConfiguration(settings.getConfigFile());
-                    settings.save(settingsConfig);
-                    YamlConfiguration messengerConfig = YamlConfiguration.loadConfiguration(messengerFile.getConfigFile());
-                    messengerFile.save(messengerConfig);
-                    YamlConfiguration cardsConfig = YamlConfiguration.loadConfiguration(cardsDataFile.getConfigFile());
-                    cardsDataFile.save(cardsConfig);
+                    settings.save();
+                    messengerFile.save();
+                    cardsDataFile.save();
                 } catch (Exception e) {
-                    plugin.getLogger().warning("Could not save config files!");
+                    plugin.getLogger().warning("Could not saveData config files!");
                     e.printStackTrace();
                     safeToSave = false;
                 }
@@ -60,5 +57,9 @@ public class SimpleConfigManager implements ConfigManager {
 
     public MessengerFile getMessenger() {
         return messengerFile;
+    }
+
+    public CardsDataFile getCardsDataFile() {
+        return cardsDataFile;
     }
 }

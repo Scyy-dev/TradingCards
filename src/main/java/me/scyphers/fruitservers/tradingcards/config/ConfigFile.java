@@ -65,10 +65,21 @@ public abstract class ConfigFile {
     public abstract void load(YamlConfiguration configuration) throws Exception;
 
     /**
-     * For saving all data into the file
+     * For saving all data into an empty configuration which is then saved to file by {@link ConfigFile#save()}. If the config file is intended to be a ready only type file (e.g. config.yml) then this method should always return false
      * @throws Exception If an error occurs saving the data
+     * @return if the configuration should be saved to file or ignored
      */
-    public abstract void save(YamlConfiguration configuration) throws Exception;
+    public abstract boolean saveData(YamlConfiguration configuration) throws Exception;
+
+    /**
+     * Saves the data to the file. Will not write data to file if false is returned by {@link ConfigFile#saveData(YamlConfiguration)}
+     * @throws Exception if an exception occurs while trying to save data to configuration or file
+     */
+    public void save() throws Exception {
+        YamlConfiguration configuration = new YamlConfiguration();
+        boolean saveToFile = this.saveData(configuration);
+        if (saveToFile) configuration.save(configFile);
+    }
 
     /**
      * For reloading the file after changes have been made. This method only needs to be overridden if calling {@link ConfigFile#load(YamlConfiguration)} multiple times is unsafe
@@ -86,4 +97,5 @@ public abstract class ConfigFile {
     public ConfigManager getManager() {
         return manager;
     }
+
 }

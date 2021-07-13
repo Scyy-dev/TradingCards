@@ -16,9 +16,9 @@ import java.util.regex.Pattern;
 
 public class MessengerFile extends ConfigFile implements Messenger {
 
-    private final Map<String, String> messages;
+    private Map<String, String> messages;
 
-    private final Map<String, List<String>> listMessages;
+    private Map<String, List<String>> listMessages;
 
     public static final Pattern hex = Pattern.compile("&#[a-fA-F0-9]{6}");
 
@@ -29,14 +29,12 @@ public class MessengerFile extends ConfigFile implements Messenger {
 
     public MessengerFile(ConfigManager manager) {
         super(manager, "messages.yml", true);
-        this.messages = new HashMap<>();
-        this.listMessages = new HashMap<>();
     }
 
     @Override
     public void load(YamlConfiguration configuration) throws Exception {
-        messages.clear();
-        listMessages.clear();
+        this.messages = new HashMap<>();
+        this.listMessages = new HashMap<>();
 
         //
         for (String key : configuration.getKeys(true)) {
@@ -69,8 +67,8 @@ public class MessengerFile extends ConfigFile implements Messenger {
 
     // Messenger is never updated through code
     @Override
-    public void save(YamlConfiguration configuration) throws Exception {
-
+    public boolean saveData(YamlConfiguration configuration) throws Exception {
+        return false;
     }
 
     // Managing Spigots BaseComponents

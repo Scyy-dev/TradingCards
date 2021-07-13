@@ -1,0 +1,52 @@
+# Howe often changing data is saved to config, in ticks (20 ticks = 1 second)
+fileSaveTicks: 72000
+
+# Chances for cards
+chances:
+  # Chance of a card dropping
+  # format is numerator/denominator - e.g. "1/10"
+  drop:
+    passive: "1/100"
+    hostile: "2/100"
+    boss: "100/100"
+  # Chance for each rarity
+  # format is a weight system - each weight from each rarity is summed, and used to compute the chance
+  # so for example, weights of 100 for common, 50 for uncommon, 10 for rare, 5 for very rare and 1 for legendary means that there is a 1/166 chance of legendary
+  # A value of 0 prevents that card rarity dropping for that source
+  rarity:
+    common:
+      passive: 100000
+      hostile: 100000
+    uncommon:
+      passive: 20000
+      hostile: 50000
+    rare:
+      hostile: 5000
+    very_rare:
+      hostile: 1000
+    legendary:
+      hostile: 1
+      boss: 1
+
+# This is where booster packs are defined.
+# If a card rarity is not included, it is assumed the amount is 0
+# All cards from a booster pack are randomly generated
+boosterpacks:
+  starter_pack:
+    name: "Starter Pack"
+    common: 9
+    rare: 1
+  advanced_pack:
+    name: "Advanced Pack"
+    common: 12
+    uncommon: 6
+    rare: 2
+  expert_pack:
+    name: "Expert Pack"
+    uncommon: 6
+    rare: 4
+    very_rare: 2
+  ultimate_pack:
+    name: "Ultimate Pack"
+    rare: 5
+    legendary: 1

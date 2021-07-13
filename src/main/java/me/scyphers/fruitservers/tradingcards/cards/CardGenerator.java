@@ -1,39 +1,34 @@
 package me.scyphers.fruitservers.tradingcards.cards;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CardGenerator {
 
-    private final Map<CardRarity, List<Card>> cards;
-
-    private final Map<CardRarity, Integer> rarityWeights;
-
-
-
-    private int totalWeight;
-
     private final Random random;
 
-    public CardGenerator(Map<CardRarity, List<Card>> cards) {
+    // Card List
+    private final Map<CardRarity, List<Card>> cards;
+
+    // Rarity chance
+    private final Map<CardSource, ChanceProvider> cardChances;
+
+    public CardGenerator(Map<CardRarity, List<Card>> cards, Map<CardSource, ChanceProvider> cardChances) {
         this.cards = cards;
         this.random = new Random();
-        this.rarityWeights = new HashMap<>();
-        this.totalWeight = 0;
+        this.cardChances = cardChances;
     }
 
-    public Card generateCard() {
-        int roll = random.nextInt(totalWeight);
-        CardRarity rarity = getRarity(roll);
+    public boolean checkCardDrop(CardSource source) {
+        if (source == CardSource.INVALID) return false;
+        return cardChances.get(source).checkDropChance(random);
+    }
+
+    public Card generateCard(CardSource source) {
+        if (source == CardSource.INVALID) throw new IllegalStateException("Cannot generate card for invalid source");
+        ChanceProvider chanceMap = cardChances.get(source);
+        CardRarity rarity = chanceMap.getRandomRarity(random);
         return getRandomCard(rarity);
-    }
-
-    public CardRarity getRarity(int weight) {
-        if (weight > totalWeight) throw new IllegalStateException("Cannot get rarity for a weight higher than " + (totalWeight - 1));
-        for (CardRarity rarity : rarityWeights.keySet()) {
-            weight -= rarityWeights.get(rarity);
-            if (weight <= 0) return rarity;
-        }
-        throw new IllegalStateException("Illegal weight limit was allowed");
     }
 
     public Card getRandomCard(CardRarity rarity) {
@@ -41,14 +36,22 @@ public class CardGenerator {
         return cardList.get(random.nextInt(cardList.size()));
     }
 
-    public void addRarityWeighting(CardRarity rarity, int weight) {
-        this.rarityWeights.put(rarity, weight);
-        this.calculateTotalWeight();
+    public Card getCard(CardRarity rarity, String cardName) {
+        if (!cards.containsKey(rarity)) return Card.invalidCard();
+        return cards.get(rarity).stream().filter(card -> card.name().equalsIgnoreCase(cardName)).findFirst().orElse(Card.invalidCard());
     }
 
-    private void calculateTotalWeight() {
-        rarityWeights.values().forEach(integer -> this.totalWeight += integer);
+    public List<String> getCardNames(CardRarity rarity) {
+        if (!cards.containsKey(rarity)) return Collections.emptyList();
+        return cards.get(rarity).stream().map(card -> card.name().toLowerCase(Locale.ROOT)).collect(Collectors.toList());
     }
 
+    public void addSourceRarityWeight(CardSource source, CardRarity rarity, int weight) {
+        if (source == CardSource.INVALID) return;
+        cardChances.get(source).addRarityWeighting(rarity, weight);
+    }
 
+    public Map<CardRarity, List<Card>> getCards() {
+        return cards;
+    }
 }

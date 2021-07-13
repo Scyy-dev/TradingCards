@@ -1,36 +1,44 @@
 package me.scyphers.fruitservers.tradingcards;
 
 import me.scyphers.fruitservers.tradingcards.api.Messenger;
+import me.scyphers.fruitservers.tradingcards.api.PlayerCardTrader;
 import me.scyphers.fruitservers.tradingcards.cards.CardGenerator;
+import me.scyphers.fruitservers.tradingcards.command.CommandFactory;
+import me.scyphers.fruitservers.tradingcards.config.PlayerDataManager;
 import me.scyphers.fruitservers.tradingcards.config.Settings;
 import me.scyphers.fruitservers.tradingcards.config.SimpleConfigManager;
 import me.scyphers.fruitservers.tradingcards.event.EventListener;
-import me.scyphers.fruitservers.tradingcards.command.AdminCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 public class TradingCards extends JavaPlugin {
 
     private SimpleConfigManager configManager;
+
+    private PlayerDataManager playerDataManager;
+
+    private CommandFactory commandFactory;
 
     private CardGenerator generator;
 
     @Override
     public void onEnable() {
 
-        // Register the Config Manager
+        // Register the Config Managers
         this.configManager = new SimpleConfigManager(this);
+        this.playerDataManager = new PlayerDataManager(this);
 
         this.generator = this.setUpGenerator();
 
-        // Register the Admin Command
-        AdminCommand adminCommand = new AdminCommand(this);
-        this.getCommand("admin").setExecutor(adminCommand);
-        this.getCommand("admin").setTabCompleter(adminCommand);
+        // Register the CommandFactory
+        this.commandFactory = new CommandFactory(this);
+        this.getCommand("cards").setExecutor(commandFactory);
+        this.getCommand("cards").setTabCompleter(commandFactory);
 
         Bukkit.getPluginManager().registerEvents(new EventListener(this), this);
 
@@ -41,14 +49,18 @@ public class TradingCards extends JavaPlugin {
         super.onDisable();
     }
 
-    public CardGenerator setUpGenerator() {
-        return new CardGenerator(null);
+    private CardGenerator setUpGenerator() {
+        return new CardGenerator(
+                configManager.getCardsDataFile().getCards(),
+                configManager.getSettings().getCardChances()
+        );
     }
 
     public void reload(CommandSender sender) {
         try {
             sender.sendMessage("Reloading...");
             configManager.reloadConfigs();
+            this.generator = setUpGenerator();
             sender.sendMessage("Successfully reloaded!");
         } catch (Exception e) {
             sender.sendMessage("Error reloading! Check console for logs!");
@@ -56,8 +68,20 @@ public class TradingCards extends JavaPlugin {
         }
     }
 
+    public CardGenerator getGenerator() {
+        return generator;
+    }
+
     public SimpleConfigManager getConfigManager() {
         return configManager;
+    }
+
+    public PlayerDataManager getPlayerDataManager() {
+        return playerDataManager;
+    }
+
+    public PlayerCardTrader getPlayerCardTrader(UUID uuid) {
+        return playerDataManager.getPlayerDataFile(uuid);
     }
 
     public Settings getSettings() {
@@ -79,6 +103,5 @@ public class TradingCards extends JavaPlugin {
                 "Built by" + authors
         );
     }
-
 
 }

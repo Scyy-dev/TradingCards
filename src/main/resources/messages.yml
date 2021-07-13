@@ -8,9 +8,22 @@
 # e.g. noPermission: "[NO_PREFIX]&cYou do not have permission to use that command"
 
 # Prefix for all messages
-prefix: "&7[&cTrading&6Cards&7] &f"
+prefix: "&7[&3Trading&6Cards&7] &f"
 
 errorMessages:
   noPermission: "&cYou do not have permission for that command"
   invalidCommand: "&cThat was not a recognised command"
+  invalidCommandLength: "&cInvalid command length"
+  playerNotFound: "&cCould not find player with name '&6%player%&c'"
+  invalidAmountRange: "&cInvalid range! Must be 1-64"
+  mustBeNumber: "&cThat value was not a number!"
   cannotOpenSign: "&cCould not display sign information. Please try again in a few moments."
+
+
+cardMessages:
+  invalidCardRarity: "&cCould not recognise that card rarity! Must be one of: &6common&c, &6uncommon&c, &6rare&c, &6very_rare &cand &6legendary"
+  invalidCardName: "&cCould not find a card with name &6%cardname%"
+  receivedCard: "&aYou have received a &6%cardname% &acard!"
+  boosterPackNotFound: "&cCould not find a booster pack with name &6%pack%"
+  receivedBoosterPack: "&aYou have received a &6%pack% &abooster pack!"
+  toggledCards: "&aCard drops for you are now &6%state%"

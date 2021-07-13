@@ -402,7 +402,7 @@ Cards:
       Type: 'Bloons Tower Defense'
       Has-Shiny-Version: true
       Info: 'Hurls a boomerang that follows a curved path. Good range and pierce.'
-  Very Rare:
+  Very_Rare:
     Luigi:
       Series: '4'
       Type: 'Mario'

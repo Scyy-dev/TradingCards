@@ -136,8 +136,7 @@ public abstract class InventoryGUI implements InventoryHolder, GUI<InventoryClic
         public void onInventoryClickEvent(InventoryClickEvent event) {
             // Verify if the inventory interacted with was an InventoryGUI
             // If the inventory interacted with is not a valid GUI then we do not handle this event
-            if (!(event.getView().getTopInventory().getHolder() instanceof InventoryGUI)) return;
-            InventoryGUI oldGUI = (InventoryGUI) event.getView().getTopInventory().getHolder();
+            if (!(event.getView().getTopInventory().getHolder() instanceof InventoryGUI oldGUI)) return;
 
             // Check if the inventory allows player inventory edits, and if so, cancel the interaction
             if (!oldGUI.allowPlayerInventoryEdits() && event.getClickedInventory() instanceof PlayerInventory) {

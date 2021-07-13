@@ -23,4 +23,10 @@ public enum CardRarity {
     public String getDisplay() {
         return display;
     }
+
+    public static CardRarity[] inRarityOrder() {
+        return new CardRarity[] {
+                COMMON, UNCOMMON, RARE, VERY_RARE, LEGENDARY
+        };
+    }
 }

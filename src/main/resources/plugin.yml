@@ -7,8 +7,23 @@ commands:
   cards:
     description: "Management of the Trading Cards plugin"
     aliases: [tradingcards, tcards]
+    permission: tradingcards.commands
 
 permissions:
+  tradingcards.commands:
+    description: access to the trading
+  tradingcards.commands.givecard:
+    description: gives cards to a player
+    default: op
+  tradingcards.commands.givepack:
+    description: gives a player a booster pack
+    default: op
+  tradingcards.commands.list:
+    description: lists all available cards
+    default: op
+  tradingcards.commands.toggle:
+    description: toggles whether a player can receive cards
+    default: op
   tradingcards.commands.reload:
     description: reloads the plugin
     default: op
