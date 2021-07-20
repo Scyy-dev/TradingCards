@@ -14,11 +14,13 @@ import java.util.Map;
 
 public class Settings extends ConfigFile {
 
-    private long saveTicks;
+    private int saveTicks;
 
     private Map<CardSource, ChanceProvider> cardChances;
 
     private Map<String, BoosterPack> boosterPacks;
+
+    private ChanceProvider shinyChance;
 
     public Settings(ConfigManager manager) {
         super(manager, "config.yml", true);
@@ -26,7 +28,7 @@ public class Settings extends ConfigFile {
 
     @Override
     public void load(YamlConfiguration configuration) throws Exception {
-        this.saveTicks = configuration.getLong("fileSaveTicks", 72000);
+        this.saveTicks = configuration.getInt("fileSaveTicks", 72000);
         this.cardChances = new HashMap<>();
         this.boosterPacks = new HashMap<>();
 
@@ -102,6 +104,13 @@ public class Settings extends ConfigFile {
 
         }
 
+        // Shiny Chances
+        String rawChance = configuration.getString("chances.shiny", "1/100");
+        String[] splitRawChance = rawChance.split("/");
+        int chance = Integer.parseInt(splitRawChance[0]);
+        int weight = Integer.parseInt(splitRawChance[1]);
+        this.shinyChance = new ChanceProvider(chance, weight);
+
     }
 
     // Settings are never updated through code
@@ -110,7 +119,7 @@ public class Settings extends ConfigFile {
         return false;
     }
 
-    public long getSaveTicks() {
+    public int getSaveTicks() {
         return saveTicks;
     }
 
@@ -122,4 +131,7 @@ public class Settings extends ConfigFile {
         return boosterPacks;
     }
 
+    public ChanceProvider getShinyChances() {
+        return shinyChance;
+    }
 }

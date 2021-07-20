@@ -5,6 +5,7 @@ fileSaveTicks: 72000
 chances:
   # Chance of a card dropping
   # format is numerator/denominator - e.g. "1/10"
+  shiny: "1/100"
   drop:
     passive: "1/100"
     hostile: "2/100"
@@ -24,6 +25,7 @@ chances:
       hostile: 5000
     very_rare:
       hostile: 1000
+      boss: 2
     legendary:
       hostile: 1
       boss: 1

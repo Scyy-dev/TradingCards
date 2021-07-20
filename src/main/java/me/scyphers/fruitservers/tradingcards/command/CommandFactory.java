@@ -64,7 +64,12 @@ public class CommandFactory implements TabExecutor {
         if (!sender.hasPermission("tradingcards.commands")) return Collections.emptyList();
 
         if (args.length == 1) {
-            return new ArrayList<>(commands.keySet());
+            List<String> list = new ArrayList<>();
+            for (String commandName : commands.keySet()) {
+                BaseCommand baseCommand = commands.get(commandName);
+                if (sender.hasPermission(baseCommand.getPermission())) list.add(commandName);
+            }
+            return list;
         }
 
         BaseCommand baseCommand = commands.get(args[0]);

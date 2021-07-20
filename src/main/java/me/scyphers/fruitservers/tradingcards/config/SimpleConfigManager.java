@@ -13,6 +13,8 @@ public class SimpleConfigManager implements ConfigManager {
     private final MessengerFile messengerFile;
     private final CardsDataFile cardsDataFile;
 
+    private final int saveTaskID;
+
     private boolean safeToSave = true;
 
     public SimpleConfigManager(TradingCards plugin) {
@@ -22,21 +24,8 @@ public class SimpleConfigManager implements ConfigManager {
         this.cardsDataFile = new CardsDataFile(this);
 
         // Schedule a repeating task to saveData the configs
-        long saveTicks = settings.getSaveTicks();
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
-            if (safeToSave) {
-                try {
-                    settings.save();
-                    messengerFile.save();
-                    cardsDataFile.save();
-                } catch (Exception e) {
-                    plugin.getLogger().warning("Could not saveData config files!");
-                    e.printStackTrace();
-                    safeToSave = false;
-                }
-            }
-
-            }, saveTicks, saveTicks);
+        int saveTicks = settings.getSaveTicks();
+        this.saveTaskID = scheduleSaveTask(saveTicks);
 
     }
 
@@ -47,8 +36,36 @@ public class SimpleConfigManager implements ConfigManager {
     }
 
     @Override
+    public void saveAll() throws Exception {
+        settings.save();
+        messengerFile.save();
+        cardsDataFile.save();
+    }
+
+    @Override
     public TradingCards getPlugin() {
         return plugin;
+    }
+
+    @Override
+    public int scheduleSaveTask(int saveTicks) {
+        return Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
+            if (safeToSave) {
+                try {
+                    this.saveAll();
+                } catch (Exception e) {
+                    plugin.getLogger().warning("Could not saveData config files!");
+                    e.printStackTrace();
+                    safeToSave = false;
+                }
+            }
+
+        }, saveTicks, saveTicks);
+    }
+
+    @Override
+    public void cancelSaveTask() {
+        Bukkit.getScheduler().cancelTask(saveTaskID);
     }
 
     public Settings getSettings() {

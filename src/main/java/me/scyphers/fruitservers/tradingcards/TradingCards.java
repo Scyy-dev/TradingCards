@@ -47,12 +47,21 @@ public class TradingCards extends JavaPlugin {
     @Override
     public void onDisable() {
         super.onDisable();
+        try {
+            configManager.saveAll();
+            playerDataManager.saveAll();
+        } catch (Exception e) {
+            getLogger().warning("Could not save data to file");
+            e.printStackTrace();
+        }
+
     }
 
     private CardGenerator setUpGenerator() {
         return new CardGenerator(
                 configManager.getCardsDataFile().getCards(),
-                configManager.getSettings().getCardChances()
+                configManager.getSettings().getCardChances(),
+                configManager.getSettings().getShinyChances()
         );
     }
 
@@ -92,15 +101,19 @@ public class TradingCards extends JavaPlugin {
         return configManager.getMessenger();
     }
 
+    public CommandFactory getCommandFactory() {
+        return commandFactory;
+    }
+
     public List<String> getSplashText() {
         StringBuilder authors = new StringBuilder();
         for (String author : this.getDescription().getAuthors()) {
             authors.append(author).append(", ");
         }
-        authors.delete(authors.length() - 1, authors.length());
+        authors.delete(authors.length() - 2, authors.length());
         return Arrays.asList(
                 "TradingCards v" + this.getDescription().getVersion(),
-                "Built by" + authors
+                "Built by " + authors
         );
     }
 

@@ -13,15 +13,22 @@ public class CardGenerator {
     // Rarity chance
     private final Map<CardSource, ChanceProvider> cardChances;
 
-    public CardGenerator(Map<CardRarity, List<Card>> cards, Map<CardSource, ChanceProvider> cardChances) {
+    private final ChanceProvider shinyChance;
+
+    public CardGenerator(Map<CardRarity, List<Card>> cards, Map<CardSource, ChanceProvider> cardChances, ChanceProvider shinyDropChance) {
         this.cards = cards;
         this.random = new Random();
         this.cardChances = cardChances;
+        this.shinyChance = shinyDropChance;
     }
 
     public boolean checkCardDrop(CardSource source) {
         if (source == CardSource.INVALID) return false;
         return cardChances.get(source).checkDropChance(random);
+    }
+
+    public boolean checkShiny() {
+        return shinyChance.checkDropChance(random);
     }
 
     public Card generateCard(CardSource source) {
@@ -46,12 +53,9 @@ public class CardGenerator {
         return cards.get(rarity).stream().map(card -> card.name().toLowerCase(Locale.ROOT)).collect(Collectors.toList());
     }
 
-    public void addSourceRarityWeight(CardSource source, CardRarity rarity, int weight) {
-        if (source == CardSource.INVALID) return;
-        cardChances.get(source).addRarityWeighting(rarity, weight);
-    }
-
     public Map<CardRarity, List<Card>> getCards() {
         return cards;
     }
+
+
 }

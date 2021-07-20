@@ -22,7 +22,6 @@ public class CardsDataFile extends ConfigFile {
 
         if (cardsSection == null) throw new IllegalArgumentException("Cannot find cards config section");
 
-
         for (String rarityKey : cardsSection.getKeys(false)) {
             ConfigurationSection raritySection = cardsSection.getConfigurationSection(rarityKey);
             if (raritySection == null) throw new IllegalStateException("Could not find card rarity section for rarity " + rarityKey);
@@ -31,13 +30,18 @@ public class CardsDataFile extends ConfigFile {
 
             List<Card> cardList = new ArrayList<>();
 
-            for (String cardName : raritySection.getKeys(false)) {
+            for (String cardNameKey : raritySection.getKeys(false)) {
 
-                String series = raritySection.getString(cardName + ".Series", "INVALID_SERIES");
-                String type = raritySection.getString(cardName + ".Type", "INVALID_TYPE");
-                boolean canBeShiny = raritySection.getBoolean(cardName + ".Has-Shiny-Version", true);
-                String description = raritySection.getString(cardName + ".Info", "INVALID_DESCRIPTION");
+                ConfigurationSection individualCardSection = raritySection.getConfigurationSection(cardNameKey);
+                if (individualCardSection == null) throw new IllegalStateException("Could not find card " + cardNameKey + " for rarity " + rarityKey);
 
+                // workaround for having . in card names
+                String cardName = cardNameKey.replaceAll("\\(\\*\\)", ".");
+
+                String series = individualCardSection.getString("Series", "INVALID_SERIES");
+                String type = individualCardSection.getString("Type", "INVALID_TYPE");
+                boolean canBeShiny = individualCardSection.getBoolean("Has-Shiny-Version", true);
+                String description = individualCardSection.getString("Info", "INVALID_DESCRIPTION");
 
                 Card card = new Card(cardName, type, description, series, rarity, canBeShiny);
                 cardList.add(card);

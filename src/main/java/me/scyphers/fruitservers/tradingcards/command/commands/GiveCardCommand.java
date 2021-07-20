@@ -78,7 +78,7 @@ public class GiveCardCommand extends BaseCommand {
             case 4:
                 CardRarity rarity;
                 try {
-                    rarity = CardRarity.valueOf(args[2]);
+                    rarity = CardRarity.valueOf(args[2].toUpperCase(Locale.ROOT));
                     return getPlugin().getGenerator().getCardNames(rarity);
                 } catch (Exception e) {
                     return Collections.emptyList();

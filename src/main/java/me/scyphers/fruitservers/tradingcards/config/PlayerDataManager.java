@@ -17,6 +17,7 @@ public class PlayerDataManager implements ConfigManager {
 
     private final File dataDirectory;
 
+    private final int saveTaskID;
     private boolean safeToSave = true;
 
     public PlayerDataManager(TradingCards plugin) {
@@ -24,13 +25,38 @@ public class PlayerDataManager implements ConfigManager {
         this.dataDirectory = new File(plugin.getDataFolder(), "data");
         this.dataFiles = new HashMap<>();
 
-        long saveTicks = plugin.getSettings().getSaveTicks();
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
+        int saveTicks = plugin.getSettings().getSaveTicks();
+        this.saveTaskID = scheduleSaveTask(saveTicks);
+    }
+
+    // This is data storage, as such there is only reading and writing, no reloading.
+    @Override
+    public void reloadConfigs() throws Exception {
+
+    }
+
+    @Override
+    public void saveAll() throws Exception {
+        for (PlayerDataFile file : dataFiles.values()) {
+            file.save();
+        }
+    }
+
+    public File getDataDirectory() {
+        return dataDirectory;
+    }
+
+    @Override
+    public Plugin getPlugin() {
+        return plugin;
+    }
+
+    @Override
+    public int scheduleSaveTask(int saveTicks) {
+        return Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
             if (safeToSave) {
                 try {
-                    for (PlayerDataFile file : dataFiles.values()) {
-                        file.save();
-                    }
+                    saveAll();
                 } catch (Exception e) {
                     plugin.getLogger().warning("Could not save player data config files!");
                     e.printStackTrace();
@@ -41,19 +67,9 @@ public class PlayerDataManager implements ConfigManager {
         }, saveTicks, saveTicks);
     }
 
-    // This is data storage, as such there is only reading and writing, no reloading.
     @Override
-    public void reloadConfigs() throws Exception {
-
-    }
-
-    public File getDataDirectory() {
-        return dataDirectory;
-    }
-
-    @Override
-    public Plugin getPlugin() {
-        return plugin;
+    public void cancelSaveTask() {
+        Bukkit.getScheduler().cancelTask(saveTaskID);
     }
 
     public PlayerDataFile getPlayerDataFile(UUID uuid) {

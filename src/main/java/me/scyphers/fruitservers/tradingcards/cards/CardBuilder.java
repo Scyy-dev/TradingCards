@@ -1,12 +1,12 @@
 package me.scyphers.fruitservers.tradingcards.cards;
 
 import me.scyphers.fruitservers.tradingcards.util.ItemBuilder;
+import org.apache.commons.lang.WordUtils;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CardBuilder {
@@ -14,7 +14,7 @@ public class CardBuilder {
     private static final String NAME_PREFIX = "&e&l[&6&lCARD&e&l] ";
     private static final String TYPE_PREFIX = "&bType: &f";
     private static final String DESCRIPTION_LINE = "&eInfo:";
-    private static final String DESCRIPTION_PREFIX = " &7- &f";
+    private static final String DESCRIPTION_PREFIX = "&f &7- &f";
     private static final String SERIES_PREFIX = "&aSeries: &f";
 
     public static ItemStack construct(String cardName, String type, String description, int lineLength, String series, CardRarity rarity, boolean shiny) {
@@ -40,22 +40,12 @@ public class CardBuilder {
     }
 
     private static List<String> formatDescription(String description, int lineLength) {
-        String[] words = description.split(" ");
+        String words = WordUtils.wrap(description, lineLength, "\n", true);
+
         List<String> list = new ArrayList<>();
-        StringBuilder currentLine = new StringBuilder(DESCRIPTION_PREFIX);
 
-        for (String word : words) {
-            currentLine.append(word);
-            if (currentLine.length() > lineLength) {
-                list.add(currentLine.toString());
-                currentLine = new StringBuilder(DESCRIPTION_PREFIX);
-            } else {
-                currentLine.append(" ");
-            }
-        }
-
-        if (!currentLine.toString().equals(DESCRIPTION_PREFIX)) {
-            list.add(currentLine.toString());
+        for (String word : words.split("\n")) {
+            list.add(DESCRIPTION_PREFIX + word);
         }
 
         return list;

@@ -28,7 +28,6 @@ public record EventListener(TradingCards plugin) implements Listener {
         // Player killed the mob
         if (event.getFinalDamage() < entity.getHealth()) return;
 
-        // TODO check if player has cards toggled
         if (!plugin.getPlayerCardTrader(player.getUniqueId()).isCardsEnabled()) return;
 
         CardGenerator generator = plugin.getGenerator();
@@ -36,10 +35,8 @@ public record EventListener(TradingCards plugin) implements Listener {
         // Generate a card
         if (plugin.getGenerator().checkCardDrop(source)) {
             Card card = generator.generateCard(source);
-
-            // TODO - implement shiny chance
-            entity.getWorld().dropItem(entity.getLocation(), card.asItem(false));
-
+            boolean shiny = generator.checkShiny();
+            entity.getWorld().dropItem(entity.getLocation(), card.asItem(shiny));
         }
 
     }

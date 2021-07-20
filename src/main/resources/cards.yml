@@ -1,3 +1,4 @@
+# Please note that .yml files do not support '.' in key names. As a work around, use (*) when you want a .
 Cards:
   Common:  
     Goomba:
@@ -120,7 +121,7 @@ Cards:
       Type: 'Kirby'
       Has-Shiny-Version: true
       Info: 'A species native to the Planet Popstar'
-    Mr._Frosty:
+    Mr(*)_Frosty:
       Series: '4'
       Type: 'Kirby'
       Has-Shiny-Version: true
@@ -156,7 +157,7 @@ Cards:
       Type: 'GTA V'
       Has-Shiny-Version: true
       Info: 'Best friend of Franklin Clinton, wannabe thug'
-    Nik Bellic:
+    Nik_Bellic:
       Series: '4'
       Type: 'GTA IV'
       Has-Shiny-Version: true
@@ -226,7 +227,7 @@ Cards:
       Type: 'Animal Crossing'
       Has-Shiny-Version: true
       Info: 'An owl character who serves the director of the Museum'
-    K.K._Slider:
+    K(*)K(*)_Slider:
       Series: '4'
       Type: 'Animal Crossing'
       Has-Shiny-Version: true

@@ -11,7 +11,7 @@ commands:
 
 permissions:
   tradingcards.commands:
-    description: access to the trading
+    description: access to the cards commands
   tradingcards.commands.givecard:
     description: gives cards to a player
     default: op

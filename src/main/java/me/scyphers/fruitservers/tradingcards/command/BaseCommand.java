@@ -6,7 +6,6 @@ import org.bukkit.command.CommandSender;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public abstract class BaseCommand {
 
@@ -56,4 +55,7 @@ public abstract class BaseCommand {
         return list;
     }
 
+    public String getPermission() {
+        return permission;
+    }
 }

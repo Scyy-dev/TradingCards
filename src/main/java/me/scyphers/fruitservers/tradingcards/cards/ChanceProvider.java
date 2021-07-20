@@ -29,7 +29,7 @@ public class ChanceProvider {
     }
 
     public CardRarity getRandomRarity(Random random) {
-        int roll = random.nextInt(totalRarityWeight);
+        int roll = random.nextInt(totalRarityWeight) + 1;
         return this.getRarity(roll);
     }
 
@@ -45,7 +45,7 @@ public class ChanceProvider {
     }
 
     public boolean checkDropChance(Random random) {
-        int roll = random.nextInt(dropChanceWeight) + 1;
+        int roll = random.nextInt(dropChanceWeight);
         return roll < chance;
     }
 }
