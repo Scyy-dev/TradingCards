@@ -1,5 +1,6 @@
 package me.scyphers.fruitservers.tradingcards.cards;
 
+import me.scyphers.fruitservers.tradingcards.WeightedChance;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +14,8 @@ public class CardGeneratorTest {
 
     @BeforeAll
     static void setup() {
-        emptyGenerator = new CardGenerator(new HashMap<>(), new HashMap<>());
+        WeightedChance<Object> shinyChances = new WeightedChance<>(0, 0);
+        emptyGenerator = new CardGenerator(new HashMap<>(), new HashMap<>(), shinyChances);
     }
 
     @Test

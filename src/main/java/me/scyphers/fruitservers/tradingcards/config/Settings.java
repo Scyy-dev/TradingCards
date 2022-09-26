@@ -1,9 +1,9 @@
 package me.scyphers.fruitservers.tradingcards.config;
 
+import me.scyphers.fruitservers.tradingcards.WeightedChance;
 import me.scyphers.fruitservers.tradingcards.cards.BoosterPack;
 import me.scyphers.fruitservers.tradingcards.cards.CardRarity;
 import me.scyphers.fruitservers.tradingcards.cards.CardSource;
-import me.scyphers.fruitservers.tradingcards.cards.ChanceProvider;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -16,11 +16,12 @@ public class Settings extends ConfigFile {
 
     private int saveTicks;
 
-    private Map<CardSource, ChanceProvider> cardChances;
+    private Map<CardSource, WeightedChance<CardRarity>> cardChances;
 
     private Map<String, BoosterPack> boosterPacks;
 
     private ChanceProvider shinyChance;
+    private WeightedChance<Object> shinyChance;
 
     public Settings(ConfigManager manager) {
         super(manager, "config.yml", true);
@@ -45,7 +46,7 @@ public class Settings extends ConfigFile {
             String[] splitRawChance = rawChance.split("/");
             int chance = Integer.parseInt(splitRawChance[0]);
             int weight = Integer.parseInt(splitRawChance[1]);
-            cardChances.put(source, new ChanceProvider(chance, weight));
+            cardChances.put(source, new WeightedChance<>(chance, weight));
         }
 
         // Rarity Chances
@@ -66,7 +67,7 @@ public class Settings extends ConfigFile {
                 CardSource source = CardSource.valueOf(sourceKey.toUpperCase(Locale.ROOT));
                 int rarityWeight = sourceSection.getInt(sourceKey);
 
-                ChanceProvider provider = cardChances.get(source);
+                WeightedChance<CardRarity> provider = cardChances.get(source);
                 provider.addRarityWeighting(rarity, rarityWeight);
             }
 
@@ -109,7 +110,7 @@ public class Settings extends ConfigFile {
         String[] splitRawChance = rawChance.split("/");
         int chance = Integer.parseInt(splitRawChance[0]);
         int weight = Integer.parseInt(splitRawChance[1]);
-        this.shinyChance = new ChanceProvider(chance, weight);
+        this.shinyChance = new WeightedChance<>(chance, weight);
 
     }
 
@@ -123,7 +124,7 @@ public class Settings extends ConfigFile {
         return saveTicks;
     }
 
-    public Map<CardSource, ChanceProvider> getCardChances() {
+    public Map<CardSource, WeightedChance<CardRarity>> getCardChances() {
         return cardChances;
     }
 
@@ -131,7 +132,7 @@ public class Settings extends ConfigFile {
         return boosterPacks;
     }
 
-    public ChanceProvider getShinyChances() {
+    public WeightedChance<Object> getShinyChances() {
         return shinyChance;
     }
 }

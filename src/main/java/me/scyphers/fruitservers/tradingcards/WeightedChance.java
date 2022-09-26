@@ -1,24 +1,24 @@
-package me.scyphers.fruitservers.tradingcards.cards;
+package me.scyphers.fruitservers.tradingcards;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class ChanceProvider {
+public class WeightedChance<T> {
 
-    private final Map<CardRarity, Integer> chanceMap;
+    private final Map<T, Integer> chanceMap;
 
     private final int chance, dropChanceWeight;
 
     private int totalRarityWeight;
 
-    public ChanceProvider(int chance, int dropChanceWeight) {
+    public WeightedChance(int chance, int dropChanceWeight) {
         this.chanceMap = new HashMap<>();
         this.chance = chance;
         this.dropChanceWeight = dropChanceWeight;
     }
 
-    public void addRarityWeighting(CardRarity rarity, int weight) {
+    public void addRarityWeighting(T rarity, int weight) {
         chanceMap.put(rarity, weight);
         this.calculateTotalWeight();
     }
@@ -28,14 +28,18 @@ public class ChanceProvider {
         chanceMap.values().forEach(integer -> this.totalRarityWeight += integer);
     }
 
-    public CardRarity getRandomRarity(Random random) {
+    public boolean hasChance(T object) {
+        return chanceMap.containsKey(object);
+    }
+
+    public T getRandomEnum(Random random) {
         int roll = random.nextInt(totalRarityWeight) + 1;
         return this.getRarity(roll);
     }
 
-    public CardRarity getRarity(int weight) {
+    public T getRarity(int weight) {
         if (weight > totalRarityWeight) throw new IllegalStateException("Cannot get rarity for a weight higher than " + (totalRarityWeight - 1));
-        for (CardRarity rarity : chanceMap.keySet()) {
+        for (T rarity : chanceMap.keySet()) {
             int rarityWeight = chanceMap.get(rarity);
             if (rarityWeight == 0) continue;
             weight -= rarityWeight;
@@ -48,4 +52,5 @@ public class ChanceProvider {
         int roll = random.nextInt(dropChanceWeight);
         return roll < chance;
     }
+
 }

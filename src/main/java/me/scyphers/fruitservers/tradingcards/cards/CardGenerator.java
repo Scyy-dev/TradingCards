@@ -1,5 +1,7 @@
 package me.scyphers.fruitservers.tradingcards.cards;
 
+import me.scyphers.fruitservers.tradingcards.WeightedChance;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -11,11 +13,11 @@ public class CardGenerator {
     private final Map<CardRarity, List<Card>> cards;
 
     // Rarity chance
-    private final Map<CardSource, ChanceProvider> cardChances;
+    private final Map<CardSource, WeightedChance<CardRarity>> cardChances;
 
-    private final ChanceProvider shinyChance;
+    private final WeightedChance<Object> shinyChance;
 
-    public CardGenerator(Map<CardRarity, List<Card>> cards, Map<CardSource, ChanceProvider> cardChances, ChanceProvider shinyDropChance) {
+    public CardGenerator(Map<CardRarity, List<Card>> cards, Map<CardSource, WeightedChance<CardRarity>> cardChances, WeightedChance<Object> shinyDropChance) {
         this.cards = cards;
         this.random = new Random();
         this.cardChances = cardChances;
@@ -33,8 +35,8 @@ public class CardGenerator {
 
     public Card generateCard(CardSource source) {
         if (source == CardSource.INVALID) throw new IllegalStateException("Cannot generate card for invalid source");
-        ChanceProvider chanceMap = cardChances.get(source);
-        CardRarity rarity = chanceMap.getRandomRarity(random);
+        WeightedChance<CardRarity> chanceMap = cardChances.get(source);
+        CardRarity rarity = chanceMap.getRandomEnum(random);
         return getRandomCard(rarity);
     }
 
