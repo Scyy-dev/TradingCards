@@ -6,6 +6,7 @@ import me.scyphers.fruitservers.tradingcards.cards.CardGenerator;
 import me.scyphers.fruitservers.tradingcards.cards.CardSource;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -18,8 +19,16 @@ public record EventListener(TradingCards plugin) implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onEntityDeathEvent(EntityDamageByEntityEvent event) {
 
-        if (!(event.getDamager() instanceof Player player)) return;
         if (!(event.getEntity() instanceof LivingEntity entity)) return;
+
+        Player player;
+        if (event.getDamager() instanceof Player damagee) {
+            player = damagee;
+        } else {
+            if (!(event.getDamager() instanceof Projectile projectile)) return;
+            if (!(projectile.getShooter() instanceof Player damagee)) return;
+            player = damagee;
+        }
 
         // Check cause
         CardSource source = CardSource.fromEntity(entity.getType());
