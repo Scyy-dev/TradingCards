@@ -15,10 +15,10 @@ repositories {
 dependencies {
 
     compileOnly 'io.papermc.paper:paper-api:1.17-R0.1-SNAPSHOT'
-    compileOnly 'org.apache.commons:commons-lang3:3.0'
+    compileOnly 'org.apache.commons:commons-lang3:3.12.0'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
     testCompileOnly 'io.papermc.paper:paper-api:1.17-R0.1-SNAPSHOT'
 }
 
