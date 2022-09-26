@@ -7,8 +7,10 @@ import me.scyphers.fruitservers.tradingcards.cards.CardSource;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.EntityType;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -16,11 +18,12 @@ public class Settings extends ConfigFile {
 
     private int saveTicks;
 
+    private Map<EntityType, CardSource> cardSources;
+
     private Map<CardSource, WeightedChance<CardRarity>> cardChances;
 
     private Map<String, BoosterPack> boosterPacks;
 
-    private ChanceProvider shinyChance;
     private WeightedChance<Object> shinyChance;
 
     public Settings(ConfigManager manager) {
@@ -30,10 +33,17 @@ public class Settings extends ConfigFile {
     @Override
     public void load(YamlConfiguration configuration) throws Exception {
         this.saveTicks = configuration.getInt("fileSaveTicks", 72000);
+        this.cardSources = new HashMap<>();
         this.cardChances = new HashMap<>();
         this.boosterPacks = new HashMap<>();
 
-        // Loading Card Chances
+        ConfigurationSection cardSourceSection = configuration.getConfigurationSection("cardSources");
+        if (cardSourceSection == null) throw new InvalidConfigurationException("Could not create card source map");
+        for (String rawSource : cardSourceSection.getKeys(false)) {
+            CardSource source = CardSource.valueOf(rawSource.toUpperCase());
+            List<String> rawEntities = cardSourceSection.getStringList(rawSource);
+            rawEntities.stream().map(EntityType::valueOf).forEach(type -> this.cardSources.put(type, source));
+        }
 
         // Drop Chances
         ConfigurationSection cardDropChanceSection = configuration.getConfigurationSection("chances.drop");
@@ -126,6 +136,10 @@ public class Settings extends ConfigFile {
 
     public Map<CardSource, WeightedChance<CardRarity>> getCardChances() {
         return cardChances;
+    }
+
+    public CardSource getSource(EntityType type) {
+        return cardSources.getOrDefault(type, CardSource.INVALID);
     }
 
     public Map<String, BoosterPack> getBoosterPacks() {
