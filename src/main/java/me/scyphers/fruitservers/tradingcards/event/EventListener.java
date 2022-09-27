@@ -4,6 +4,7 @@ import me.scyphers.fruitservers.tradingcards.TradingCards;
 import me.scyphers.fruitservers.tradingcards.cards.Card;
 import me.scyphers.fruitservers.tradingcards.cards.CardGenerator;
 import me.scyphers.fruitservers.tradingcards.cards.CardSource;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -30,20 +31,18 @@ public record EventListener(TradingCards plugin) implements Listener {
             player = damagee;
         }
 
-        // Check cause
-        CardSource source = CardSource.fromEntity(entity.getType());
+        // Check source - ignore invalid entities
+        CardSource source = plugin.getSettings().getSource(event.getEntityType());
         if (source == CardSource.INVALID) return;
 
-        // Player killed the mob
         if (event.getFinalDamage() < entity.getHealth()) return;
-
         if (!plugin.getPlayerCardTrader(player.getUniqueId()).isCardsEnabled()) return;
 
         CardGenerator generator = plugin.getGenerator();
 
         // Generate a card
         if (plugin.getGenerator().checkCardDrop(source)) {
-            Card card = generator.generateCard(source);
+            Card card = generator.generateCard(event.getEntityType());
             boolean shiny = generator.checkShiny();
             entity.getWorld().dropItem(entity.getLocation(), card.asItem(shiny));
         }

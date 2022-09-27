@@ -7,9 +7,11 @@ import me.scyphers.fruitservers.tradingcards.cards.CardRarity;
 import me.scyphers.fruitservers.tradingcards.command.BaseCommand;
 import me.scyphers.fruitservers.tradingcards.util.PlayerUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BundleMeta;
 
 import java.util.ArrayList;
 import java.util.Collections;

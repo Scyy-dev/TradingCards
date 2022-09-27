@@ -22,9 +22,12 @@ public class Settings extends ConfigFile {
 
     private Map<CardSource, WeightedChance<CardRarity>> cardChances;
 
+    private boolean specificChances;
+    private Map<EntityType, WeightedChance<CardRarity>> specificEntityChances;
+
     private Map<String, BoosterPack> boosterPacks;
 
-    private WeightedChance<Object> shinyChance;
+    private double shinyChance;
 
     public Settings(ConfigManager manager) {
         super(manager, "config.yml", true);
@@ -35,6 +38,7 @@ public class Settings extends ConfigFile {
         this.saveTicks = configuration.getInt("fileSaveTicks", 72000);
         this.cardSources = new HashMap<>();
         this.cardChances = new HashMap<>();
+        this.specificEntityChances = new HashMap<>();
         this.boosterPacks = new HashMap<>();
 
         ConfigurationSection cardSourceSection = configuration.getConfigurationSection("cardSources");
@@ -52,11 +56,8 @@ public class Settings extends ConfigFile {
 
         for (String sourceKey : cardDropChanceSection.getKeys(false)) {
             CardSource source = CardSource.valueOf(sourceKey.toUpperCase(Locale.ROOT));
-            String rawChance = cardDropChanceSection.getString(sourceKey, "1/100");
-            String[] splitRawChance = rawChance.split("/");
-            int chance = Integer.parseInt(splitRawChance[0]);
-            int weight = Integer.parseInt(splitRawChance[1]);
-            cardChances.put(source, new WeightedChance<>(chance, weight));
+            double dropRate = cardDropChanceSection.getDouble(sourceKey, 0.01);
+            cardChances.put(source, new WeightedChance<>(dropRate));
         }
 
         // Rarity Chances
@@ -115,13 +116,37 @@ public class Settings extends ConfigFile {
 
         }
 
-        // Shiny Chances
-        String rawChance = configuration.getString("chances.shiny", "1/100");
-        String[] splitRawChance = rawChance.split("/");
-        int chance = Integer.parseInt(splitRawChance[0]);
-        int weight = Integer.parseInt(splitRawChance[1]);
-        this.shinyChance = new WeightedChance<>(chance, weight);
+        this.specificChances = configuration.getBoolean("useSpecificChances", false);
+        if (specificChances) {
+            ConfigurationSection specificChanceSection = configuration.getConfigurationSection("specificChances");
+            if (specificChanceSection == null) throw new InvalidConfigurationException("Could not find specific chances");
 
+            for (String rawEntity : specificChanceSection.getKeys(false)) {
+                EntityType type = EntityType.valueOf(rawEntity.toUpperCase());
+
+                ConfigurationSection entityCardSection = specificChanceSection.getConfigurationSection(rawEntity);
+                if (entityCardSection == null) throw new InvalidConfigurationException("Could not find rarity for " + rawEntity);
+
+                double dropChance = entityCardSection.getDouble("dropRate", 0.01);
+                WeightedChance<CardRarity> chance = new WeightedChance<>(dropChance);
+
+                ConfigurationSection entityCardRarities = entityCardSection.getConfigurationSection("rarityWeights");
+                if (entityCardRarities == null) throw new InvalidConfigurationException("Could find card rarities for " + rawEntity);
+
+                for (String rawRarity : entityCardSection.getKeys(false)) {
+                    CardRarity rarity = CardRarity.valueOf(rawRarity.toUpperCase());
+                    int weight = entityCardSection.getInt(rawRarity, 1);
+                    chance.addRarityWeighting(rarity, weight);
+                }
+
+                specificEntityChances.put(type, chance);
+
+            }
+
+        }
+
+        // Shiny Chances
+        this.shinyChance = configuration.getDouble("chances.shiny", 0.01);
     }
 
     // Settings are never updated through code
@@ -142,11 +167,19 @@ public class Settings extends ConfigFile {
         return cardSources.getOrDefault(type, CardSource.INVALID);
     }
 
+    public boolean useSpecificChances() {
+        return specificChances;
+    }
+
+    public Map<EntityType, WeightedChance<CardRarity>> getEntityChances() {
+        return specificEntityChances;
+    }
+
     public Map<String, BoosterPack> getBoosterPacks() {
         return boosterPacks;
     }
 
-    public WeightedChance<Object> getShinyChances() {
+    public double getShinyChances() {
         return shinyChance;
     }
 }

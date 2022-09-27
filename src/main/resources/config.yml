@@ -1,15 +1,23 @@
 # Howe often changing data is saved to config, in ticks (20 ticks = 1 second)
 fileSaveTicks: 72000
 
+cardSources:
+  passive:
+    -
+  hostile:
+    -
+  boss:
+    -
+
 # Chances for cards
 chances:
   # Chance of a card dropping
-  # format is numerator/denominator - e.g. "1/10"
-  shiny: "1/100"
+  # Format is a number between 0 and 1, where 0 is 0% chance and 1 is 100% chance
+  shiny: 0.01
   drop:
-    passive: "1/100"
-    hostile: "2/100"
-    boss: "100/100"
+    passive: 0.01
+    hostile: 0.01
+    boss: 1
   # Chance for each rarity
   # format is a weight system - each weight from each rarity is summed, and used to compute the chance
   # so for example, weights of 100 for common, 50 for uncommon, 10 for rare, 5 for very rare and 1 for legendary means that there is a 1/166 chance of legendary
@@ -29,6 +37,25 @@ chances:
     legendary:
       hostile: 1
       boss: 1
+
+  useSpecificChances: true
+  specificChances:
+    ELDER_GUARDIAN:
+      dropRate: 1
+      rarityWeights:
+        rare: 60
+        very_rare: 30
+        legendary: 10
+    WITHER:
+      dropRate: 1
+      rarityWeights: 1
+        very_rare: 20
+        legendary: 10
+    ENDER_DRAGON:
+      dropRate: 1
+        rarityWeights: 1
+          very_rare: 20
+          legendary: 10
 
 # This is where booster packs are defined.
 # If a card rarity is not included, it is assumed the amount is 0

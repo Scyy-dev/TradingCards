@@ -1,5 +1,7 @@
 package me.scyphers.fruitservers.tradingcards;
 
+import org.jetbrains.annotations.Range;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -8,14 +10,13 @@ public class WeightedChance<T> {
 
     private final Map<T, Integer> chanceMap;
 
-    private final int chance, dropChanceWeight;
+    private final double dropRate;
 
     private int totalRarityWeight;
 
-    public WeightedChance(int chance, int dropChanceWeight) {
+    public WeightedChance(@Range(from = 0, to = 1) double dropRate) {
         this.chanceMap = new HashMap<>();
-        this.chance = chance;
-        this.dropChanceWeight = dropChanceWeight;
+        this.dropRate = dropRate;
     }
 
     public void addRarityWeighting(T rarity, int weight) {
@@ -49,8 +50,8 @@ public class WeightedChance<T> {
     }
 
     public boolean checkDropChance(Random random) {
-        int roll = random.nextInt(dropChanceWeight);
-        return roll < chance;
+        double roll = random.nextDouble();
+        return roll < dropRate;
     }
 
 }

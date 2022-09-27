@@ -26,6 +26,8 @@ public class TradingCards extends JavaPlugin {
 
     private CardGenerator generator;
 
+    // TODO - port over to ScyCore
+
     @Override
     public void onEnable() {
 
@@ -61,6 +63,7 @@ public class TradingCards extends JavaPlugin {
         return new CardGenerator(
                 configManager.getCardsDataFile().getCards(),
                 configManager.getSettings().getCardChances(),
+                configManager.getSettings().getEntityChances(),
                 configManager.getSettings().getShinyChances()
         );
     }
