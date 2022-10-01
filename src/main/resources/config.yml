@@ -77,6 +77,7 @@ cardSources:
     - WARDEN
   boss:
     - ENDER_DRAGON
+    - WITHER
 
 # Chances for cards
 chances:
@@ -107,24 +108,24 @@ chances:
       hostile: 1
       boss: 1
 
-  useSpecificChances: true
-  specificChances:
-    ELDER_GUARDIAN:
-      dropRate: 1
-      rarityWeights:
-        rare: 60
-        very_rare: 30
-        legendary: 10
-    WITHER:
-      dropRate: 1
-      rarityWeights: 1
-        very_rare: 20
-        legendary: 10
-    ENDER_DRAGON:
-      dropRate: 1
-        rarityWeights: 1
-          very_rare: 20
-          legendary: 10
+useSpecificChances: true
+specificChances:
+  ELDER_GUARDIAN:
+    dropRate: 1
+    rarityWeights:
+      rare: 60
+      very_rare: 30
+      legendary: 10
+  WITHER:
+    dropRate: 1
+    rarityWeights:
+      very_rare: 20
+      legendary: 10
+  ENDER_DRAGON:
+    dropRate: 1
+    rarityWeights:
+      very_rare: 20
+      legendary: 10
 
 # This is where booster packs are defined.
 # If a card rarity is not included, it is assumed the amount is 0
