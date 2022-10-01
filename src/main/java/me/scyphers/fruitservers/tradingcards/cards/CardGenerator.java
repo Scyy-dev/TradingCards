@@ -2,7 +2,6 @@ package me.scyphers.fruitservers.tradingcards.cards;
 
 import me.scyphers.fruitservers.tradingcards.WeightedChance;
 import org.bukkit.entity.EntityType;
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -29,7 +28,8 @@ public class CardGenerator {
         this.shinyChance = shinyChance;
     }
 
-    public boolean checkCardDrop(CardSource source) {
+    public boolean tryDropCard(EntityType type, CardSource source) {
+        if (entityChances.containsKey(type)) return entityChances.get(type).checkDropChance(random);
         if (source == CardSource.INVALID) return false;
         return cardChances.get(source).checkDropChance(random);
     }
@@ -39,15 +39,14 @@ public class CardGenerator {
         return roll < shinyChance;
     }
 
-    public Card generateCard(EntityType source) {
-        if (entityChances.containsKey(source)) {
-            WeightedChance<CardRarity> chanceMap = entityChances.get(source);
+    public Card generateCard(EntityType type, CardSource source) {
+        if (entityChances.containsKey(type)) {
+            WeightedChance<CardRarity> chanceMap = entityChances.get(type);
             CardRarity rarity = chanceMap.getRandomEnum(random);
             return getRandomCard(rarity);
         } else {
-            CardSource cardSource = CardSource.fromEntity(source);
-            if (cardSource == CardSource.INVALID) throw new IllegalStateException("Cannot generate card for invalid source");
-            WeightedChance<CardRarity> chanceMap = cardChances.get(cardSource);
+            if (source == CardSource.INVALID) throw new IllegalStateException("Cannot generate card for invalid type");
+            WeightedChance<CardRarity> chanceMap = cardChances.get(source);
             CardRarity rarity = chanceMap.getRandomEnum(random);
             return getRandomCard(rarity);
         }

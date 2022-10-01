@@ -133,7 +133,7 @@ public class Settings extends ConfigFile {
                 ConfigurationSection entityCardRarities = entityCardSection.getConfigurationSection("rarityWeights");
                 if (entityCardRarities == null) throw new InvalidConfigurationException("Could find card rarities for " + rawEntity);
 
-                for (String rawRarity : entityCardSection.getKeys(false)) {
+                for (String rawRarity : entityCardRarities.getKeys(false)) {
                     CardRarity rarity = CardRarity.valueOf(rawRarity.toUpperCase());
                     int weight = entityCardSection.getInt(rawRarity, 1);
                     chance.addRarityWeighting(rarity, weight);
