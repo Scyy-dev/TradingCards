@@ -126,6 +126,12 @@ specificChances:
     rarityWeights:
       very_rare: 20
       legendary: 10
+  PIGLIN_BRUTE:
+    dropRate: 1
+    rarityWeights:
+      uncommon: 30
+      rare: 20
+      very_rare: 10
 
 # This is where booster packs are defined.
 # If a card rarity is not included, it is assumed the amount is 0
