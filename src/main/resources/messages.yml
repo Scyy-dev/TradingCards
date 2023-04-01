@@ -24,6 +24,7 @@ cardMessages:
   invalidCardRarity: "&cCould not recognise that card rarity! Must be one of: &6common&c, &6uncommon&c, &6rare&c, &6very_rare &cand &6legendary"
   invalidCardName: "&cCould not find a card with name &6%cardname%"
   receivedCard: "&aYou have received a &6%cardname% &acard!"
+  receivedRandomCard: "&aYou have received a %rarity% &acard!"
   boosterPackNotFound: "&cCould not find a booster pack with name &6%pack%"
   receivedBoosterPack: "&aYou have received a &6%pack% &abooster pack!"
   toggledCards: "&aCard drops for you are now &6%state%"

@@ -28,11 +28,12 @@ public class CommandFactory implements TabExecutor {
 
         // Weird text alignment is to make permissions align
         this.commands = Map.of(
-                "toggle",   new ToggleCommand  (plugin, "tradingcards.commands.toggle"),
-                "givecard", new GiveCardCommand(plugin, "tradingcards.commands.givecard"),
-                "givepack", new GivePackCommand(plugin, "tradingcards.commands.givepack"),
-                "list",     new ListCommand    (plugin, "tradingcards.commands.list"),
-                "reload",   new ReloadCommand  (plugin, "tradingcards.commands.reload")
+                "toggle",         new ToggleCommand    (plugin, "tradingcards.commands.toggle"),
+                "givecard",       new GiveCardCommand  (plugin, "tradingcards.commands.givecard"),
+                "givepack",       new GivePackCommand  (plugin, "tradingcards.commands.givepack"),
+                "list",           new ListCommand      (plugin, "tradingcards.commands.list"),
+                "giverandomcard", new RandomCardCommand(plugin, "tradingcards.commands.giverandomcard"),
+                "reload",         new ReloadCommand    (plugin, "tradingcards.commands.reload")
         );
     }
 
